@@ -12,7 +12,7 @@
       <th>終了日</th>
       <th>終日</th>
       <th>更新日時</th>
-      <th>操作</th>
+      <th></th>
     </tr>
   </thead>
 
@@ -22,19 +22,15 @@
         <td><%= schedule.id %></td>
         <td><%= schedule.title %></td>
         
-        <% # 開始日・終了日：yyyy/mm/dd 形式 %>
         <td><%= schedule.start_date %></td>
         <td><%= schedule.end_date %></td>
         
-        <% # 終日：チェックがあれば「○」、なければ空欄 %>
         <td><%= schedule.is_all_day ? "○" : "" %></td>
         
-        <% # 更新日時：yyyy/mm/dd HH:MM 形式 %>
         <td><%= schedule.updated_at.to_fs(:datetime_jp) %></td>
         <td>
           <%= link_to "詳細", schedule_path(schedule) %>
           <%= link_to "編集", edit_schedule_path(schedule) %>
-          <% # 削除リンク：確認モーダル付き %>
           <%= link_to "削除", schedule_path(schedule), 
                       data: { turbo_method: :delete, turbo_confirm: "予定を削除しますか？" } %>
         </td>

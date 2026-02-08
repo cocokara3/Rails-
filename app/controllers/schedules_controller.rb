@@ -10,11 +10,9 @@ class SchedulesController < ApplicationController
   def create
     @schedule = Schedule.new(schedule_params)
     if @schedule.save
-      # 成功時：flash[:notice] を使うのが一般的
       flash[:notice] = "スケジュールを登録しました"
       redirect_to schedules_path
     else
-      # 失敗時：flash[:alert] を使うのが一般的
       flash[:alert] = "スケジュールの登録に失敗しました"
       render :new, status: :unprocessable_entity
     end
